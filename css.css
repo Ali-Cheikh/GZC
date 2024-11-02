@@ -18329,7 +18329,7 @@ a.u-link.u-text-hover-grey-90:hover {
         .u-input
         {
         border-width: 1px;
-        borders: top right bottom left;
+        border: top right bottom left;
         }
         /** common-rules **/
 
