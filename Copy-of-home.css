@@ -1416,6 +1416,9 @@
   .u-section-8 .u-sheet-1 {
     min-height: 718px;
   }
+  #hide{
+    display: none;
+  }
 
   .u-section-8 .u-layout-cell-1 {
     min-height: 492px;
