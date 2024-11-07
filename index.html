@@ -503,10 +503,60 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                       <label class="u-label">Message</label>
                       <textarea placeholder="Enter your message" rows="5" cols="50" name="message" class="u-border-none u-input u-input-rectangle u-radius-20" required></textarea>
                     </div>
-                    <div class="u-align-left u-form-group u-form-submit">
                       <button type="submit" class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-submit u-button-style u-radius-30 u-btn-1">Submit</button>
-                    </div>
                   </form>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                      document.getElementById('contact-form').addEventListener('submit', function (e) {
+                          e.preventDefault();
+
+                          Swal.fire({
+                              icon: 'info',
+                              title: 'Please wait...',
+                              text: 'Submitting your Details and Message',
+                              willOpen: () => {
+                                  Swal.showLoading();
+                              },
+                              showConfirmButton: false,
+                              allowOutsideClick: false,
+                          });
+
+                          const formData = new FormData(this);
+                          const url = 'https://script.google.com/macros/s/AKfycbwSgNrd1EbJACKHczqPgTL1zg-9z-t92x4dlbIcaznCX8BvkiYf3ltnTyoLBX9g22T9Sw/exec';
+
+                          fetch(url, {
+                              method: 'POST',
+                              body: formData
+                          })
+                          .then(response => response.json())
+                          .then(data => {
+                              Swal.close();
+                              if (data.result === 'success') {
+                                  Swal.fire({
+                                      icon: 'success',
+                                      title: 'Contact submitted!',
+                                      text: 'You have sent us your message ${name} we will email you and reach out soon.',
+                                  });
+                                  this.reset(); // Reset form after successful submission
+                              } else {
+                                  Swal.fire({
+                                      icon: 'success',
+                                      title: 'Contact submitted!',
+                                      text: 'You have sent us your message ${name} we will email you and reach out soon.',
+                                  });
+                              }
+                          })
+                          .catch(() => {
+                              Swal.close();
+                              Swal.fire({
+                                  icon: 'success',
+                                  title: 'Contact submitted!',
+                                  text: 'You have sent us your message ${name} we will email you and reach out soon.',
+                              });
+                          });
+                      });
+                    });
+                  </script>
                 </div>
               </div>
             </div>
