@@ -63,7 +63,8 @@ Swal.fire({
                   icon: 'success',
                   title: 'Contact submitted!',
                   text: `Thank you, ${name}! We will reach out to you soon via email.`,
-              });
+                })
+                $('#contact-form')[0].reset();
             }
         });
     });
