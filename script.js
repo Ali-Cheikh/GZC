@@ -41,13 +41,14 @@ Swal.fire({
             processData: false,
             contentType: false,
             success: function (data) {
-                Swal.close();
+                Swal.close(); // Close the loading popup
                 if (data.result === 'success') {
                     Swal.fire({
                         icon: 'success',
                         title: 'Contact submitted!',
                         text: `Thank you, ${name}! We will reach out to you soon via email.`,
                     }).then(() => {
+                        // Reload the page after successful submission
                         location.reload();
                     });
                 } else {
@@ -59,17 +60,16 @@ Swal.fire({
                 }
             },
             error: function (error) {
-                Swal.close();
+                Swal.close(); // Close the loading popup
                 Swal.fire({
-                  icon: 'success',
-                  title: 'Contact submitted!',
-                  text: `Thank you, ${name}! We will reach out to you soon via email.`,
+                    icon: 'success',
+                    title: 'Contact submitted!',
+                    text: `Thank you, ${name}! We will reach out to you soon via email.`,
                 }).then(() => {
-                  location.reload();
+                    // Reload the page after successful submission
+                    location.reload();
                 });
             }
         });
     });
   });
-  
-  
