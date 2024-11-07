@@ -492,71 +492,81 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                 <div class="custom-expanded u-form u-grey-5 u-radius-50 u-form-1">
                   <form class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form contact-form" id="contact-form" style="padding: 30px;">
                     <div class="u-form-group u-form-name">
-                      <label class="u-label">Name</label>
-                      <input type="text" placeholder="Enter your Name" name="name" class="u-border-none u-input u-input-rectangle u-radius-20" required>
+                        <label class="u-label">Name</label>
+                        <input type="text" placeholder="Enter your Name" name="name" class="u-border-none u-input u-input-rectangle u-radius-20" required>
                     </div>
                     <div class="u-form-email u-form-group">
-                      <label class="u-label">Email</label>
-                      <input type="email" placeholder="Enter a valid email address" name="email" class="u-border-none u-input u-input-rectangle u-radius-20" required>
+                        <label class="u-label">Email</label>
+                        <input type="email" placeholder="Enter a valid email address" name="email" class="u-border-none u-input u-input-rectangle u-radius-20" required>
                     </div>
                     <div class="u-form-group u-form-message">
-                      <label class="u-label">Message</label>
-                      <textarea placeholder="Enter your message" rows="5" cols="50" name="message" class="u-border-none u-input u-input-rectangle u-radius-20" required></textarea>
+                        <label class="u-label">Message</label>
+                        <textarea placeholder="Enter your message" rows="5" cols="50" name="message" class="u-border-none u-input u-input-rectangle u-radius-20" required></textarea>
                     </div>
-                      <button type="submit" class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-submit u-button-style u-radius-30 u-btn-1">Submit</button>
-                  </form>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                      document.getElementById('contact-form').addEventListener('submit', function (e) {
-                          e.preventDefault();
-
-                          Swal.fire({
-                              icon: 'info',
-                              title: 'Please wait...',
-                              text: 'Submitting your Details and Message',
-                              willOpen: () => {
-                                  Swal.showLoading();
-                              },
-                              showConfirmButton: false,
-                              allowOutsideClick: false,
-                          });
-
-                          const formData = new FormData(this);
-                          const url = 'https://script.google.com/macros/s/AKfycbwSgNrd1EbJACKHczqPgTL1zg-9z-t92x4dlbIcaznCX8BvkiYf3ltnTyoLBX9g22T9Sw/exec';
-
-                          fetch(url, {
-                              method: 'POST',
-                              body: formData
-                          })
-                          .then(response => response.json())
-                          .then(data => {
-                              Swal.close();
-                              if (data.result === 'success') {
-                                  Swal.fire({
-                                      icon: 'success',
-                                      title: 'Contact submitted!',
-                                      text: 'You have sent us your message ${name} we will email you and reach out soon.',
-                                  });
-                                  this.reset(); // Reset form after successful submission
-                              } else {
-                                  Swal.fire({
-                                      icon: 'success',
-                                      title: 'Contact submitted!',
-                                      text: 'You have sent us your message ${name} we will email you and reach out soon.',
-                                  });
-                              }
-                          })
-                          .catch(() => {
-                              Swal.close();
-                              Swal.fire({
-                                  icon: 'success',
-                                  title: 'Contact submitted!',
-                                  text: 'You have sent us your message ${name} we will email you and reach out soon.',
-                              });
-                          });
-                      });
+                    <button type="submit" class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-submit u-button-style u-radius-30 u-btn-1">Submit</button>
+                </form>
+                
+                <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    document.getElementById('contact-form').addEventListener('submit', function (e) {
+                        e.preventDefault();
+                
+                        console.log("Form submitted. Preparing to send data...");
+                
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Please wait...',
+                            text: 'Submitting your details and message',
+                            willOpen: () => {
+                                Swal.showLoading();
+                            },
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                        });
+                
+                        const formData = new FormData(this);
+                        const name = formData.get('name');
+                        const url = 'https://script.google.com/macros/s/AKfycbxQ-vRPQ_JR19wzBueVOPfsrk5n_o4Y37N-1rv-zrdr0ZwVtOG6vbFRbM_H1ynVzfNIKA/exec';
+                
+                        fetch(url, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            console.log("Received response:", response);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log("Data received from server:", data);
+                            Swal.close();
+                            if (data.result === 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Contact submitted!',
+                                    text: `Thank you, ${name}! We will reach out to you soon via email.`,
+                                });
+                                this.reset(); // Reset form after successful submission
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Submission failed',
+                                    text: 'An error occurred. Please try again later.',
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error occurred:", error);
+                            Swal.close();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Submission failed',
+                                text: 'An error occurred. Please check your connection and try again.',
+                            });
+                        });
                     });
-                  </script>
+                });
+                </script>
+                
                 </div>
               </div>
             </div>
