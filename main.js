@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
   Swal.fire({
     title: 'Gaming Day Soon Announcement!',
     imageUrl: 'https://images.indianexpress.com/2024/07/GRKnAY9XAAA_Tgr.jpg',
@@ -71,6 +72,8 @@
 //         });
 //     });
 // });
+=======
+>>>>>>> 22bb8bfce98062692007a64863eac7f093b263ad
 
 
 
