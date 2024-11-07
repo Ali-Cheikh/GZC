@@ -1,7 +1,7 @@
 
   Swal.fire({
-    title: 'Gaming Day Announcement!',
-    imageUrl: 'https://scontent.ftun8-1.fna.fbcdn.net/v/t39.30808-6/465656597_122188022318217218_4587143427503311387_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=oST8FQ9bF7wQ7kNvgEjwYhY&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&_nc_gid=Auww9XqM_FH3_YIJSvckVRQ&oh=00_AYD8Eu1vVN8mkTbe-9LBg776V6wA0VK757chaTM3Ka15lA&oe=67305C34',
+    title: 'Gaming Day Soon Announcement!',
+    imageUrl: 'https://images.indianexpress.com/2024/07/GRKnAY9XAAA_Tgr.jpg',
     imageAlt: 'Event Image',
     showCloseButton: true,
     closeButtonColor:'#ebd577',
@@ -20,63 +20,57 @@
     }
   });
 
-  Swal.fire({ 
-    icon: 'success', 
-    title: 'Session was a success', 
-    html: 'We have proceeded with the info-session successfully. For those who are interested and were not with us, <br><a href="tel:+21627360463" style="font-weight: bold; color: #3085d6;">contact us</a> or <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1155.2917921602254!2d10.760812705893601!3d34.76414285219767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1301d30077f72b9d%3A0x5a60405f0fc33ee3!2sBright%20Horizons%20Center!5e1!3m2!1sen!2stn!4v1730245499371!5m2!1sen!2stn" target="_blank" style="font-weight: bold; color: #3085d6;">visit our facility</a>.',
-    allowOutsideClick: false, 
-    showConfirmButton: false
-});
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-        e.preventDefault();
 
-        Swal.fire({
-            icon: 'info',
-            title: 'Please wait...',
-            text: 'Registering Your Contact',
-            willOpen: () => {
-                Swal.showLoading();
-            },
-            showConfirmButton: false,
-            allowOutsideClick: false,
-        });
+// document.addEventListener('DOMContentLoaded', function () {
+//     document.getElementById('contact-form').addEventListener('submit', function (e) {
+//         e.preventDefault();
 
-        const formData = new FormData(this);
-        const url = 'ghjkffjd';
+//         Swal.fire({
+//             icon: 'info',
+//             title: 'Please wait...',
+//             text: 'Registering Your Contact',
+//             willOpen: () => {
+//                 Swal.showLoading();
+//             },
+//             showConfirmButton: false,
+//             allowOutsideClick: false,
+//         });
 
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            Swal.close();
-            if (data.result === 'success') {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Form submitted!',
-                    text: 'You are registered. We will be glad to have you.',
-                });
-                this.reset(); // Reset form after successful submission
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Form submitted!',
-                    text: 'You are registered. We will be glad to have you.',
-                });
-            }
-        })
-        .catch(() => {
-            Swal.close();
-            Swal.fire({
-                icon: 'success',
-                title: 'Form submitted!',
-                text: 'You are registered. We will be glad to have you.',
-            });
-        });
-    });
-});
+//         const formData = new FormData(this);
+//         const url = 'ghjkffjd';
+
+//         fetch(url, {
+//             method: 'POST',
+//             body: formData
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             Swal.close();
+//             if (data.result === 'success') {
+//                 Swal.fire({
+//                     icon: 'success',
+//                     title: 'Form submitted!',
+//                     text: 'You are registered. We will be glad to have you.',
+//                 });
+//                 this.reset(); // Reset form after successful submission
+//             } else {
+//                 Swal.fire({
+//                     icon: 'success',
+//                     title: 'Form submitted!',
+//                     text: 'You are registered. We will be glad to have you.',
+//                 });
+//             }
+//         })
+//         .catch(() => {
+//             Swal.close();
+//             Swal.fire({
+//                 icon: 'success',
+//                 title: 'Form submitted!',
+//                 text: 'You are registered. We will be glad to have you.',
+//             });
+//         });
+//     });
+// });
 
 
 
