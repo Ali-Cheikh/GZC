@@ -1,20 +1,3 @@
-
-Swal.fire({
-    title: 'Gaming Day Soon Announcement!',
-    imageUrl: 'https://images.indianexpress.com/2024/07/GRKnAY9XAAA_Tgr.jpg',
-    imageAlt: 'Event Image',
-    showCloseButton: true,
-    closeButtonColor:'#ebd577',
-    showConfirmButton: false,
-    color:'#fff',
-    customClass: {
-      popup: 'swal-custom-popup'
-    },
-    background: 'rgba(0, 0, 0, 0.7)',
-    allowOutsideClick: false
-  });
-  
-  
   $(document).ready(function () {
     $('#contact-form').on('submit', function (e) {
         e.preventDefault();
